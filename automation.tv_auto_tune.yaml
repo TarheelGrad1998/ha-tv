@@ -1,0 +1,159 @@
+alias: TV Auto Tune
+trigger:
+  - entity_id: calendar.tv_auto_tune
+    from: "off"
+    platform: state
+    to: "on"
+    id: calendar
+  - platform: state
+    entity_id:
+      - calendar.tv_auto_tune
+    attribute: description
+  - platform: state
+    entity_id:
+      - calendar.carolina_panthers
+    from: "off"
+    to: "on"
+    id: panthers
+  - platform: state
+    entity_id:
+      - calendar.north_carolina_tar_heels_fball
+    from: "off"
+    to: "on"
+    id: heelsfball
+  - platform: state
+    entity_id:
+      - calendar.north_carolina_tar_heels_bball
+    from: "off"
+    to: "on"
+    id: heelsbball
+  - platform: state
+    entity_id:
+      - remote.living_room_tv
+    from: "off"
+    id: lrtv
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 3
+  - platform: state
+    entity_id:
+      - remote.bedroom_android_tv
+    from: "off"
+    id: bedtv
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 3
+  - platform: state
+    entity_id:
+      - sensor.carolina_panthers
+    from: PRE
+    to: IN
+    id: panthers
+  - platform: state
+    entity_id:
+      - sensor.unc_basketball
+    from: PRE
+    to: IN
+    id: heelsbball
+  - platform: state
+    entity_id:
+      - sensor.unc_football
+    id: heelsfball
+    from: PRE
+    to: IN
+condition:
+  - condition: or
+    conditions:
+      - condition: not
+        conditions:
+          - condition: state
+            entity_id: remote.bedroom_android_tv
+            state: "off"
+          - condition: state
+            entity_id: remote.bedroom_android_tv
+            state: unavailable
+      - condition: not
+        conditions:
+          - condition: state
+            entity_id: remote.living_room_tv
+            state: "off"
+          - condition: state
+            entity_id: remote.living_room_tv
+            state: unavailable
+  - condition: or
+    conditions:
+      - condition: state
+        entity_id: calendar.tv_auto_tune
+        state: "on"
+      - condition: state
+        entity_id: calendar.carolina_panthers
+        state: "on"
+      - condition: state
+        entity_id: calendar.north_carolina_tar_heels_bball
+        state: "on"
+      - condition: state
+        entity_id: calendar.north_carolina_tar_heels_fball
+        state: "on"
+      - condition: state
+        entity_id: sensor.carolina_panthers
+        state: IN
+      - condition: state
+        entity_id: sensor.unc_basketball
+        state: IN
+      - condition: state
+        entity_id: sensor.unc_football
+        state: IN
+action:
+  - alias: Set Channel
+    variables:
+      channel: >
+        {% if is_state('calendar.tv_auto_tune', 'on') %}
+          {{ state_attr("calendar.tv_auto_tune", "description") | upper }}
+        {% elif is_state('calendar.north_carolina_tar_heels_fball', 'on') or
+        is_state('sensor.unc_football', 'IN') %}
+          {{ state_attr('sensor.unc_football', 'tv_network') | upper }}
+        {% elif is_state('calendar.north_carolina_tar_heels_bball', 'on') or
+        is_state('sensor.unc_basketball', 'IN') %}
+          {{ state_attr('sensor.unc_basketball', 'tv_network') | upper }}
+        {% elif is_state('calendar.carolina_panthers', 'on') or
+        is_state('sensor.carolina_panthers', 'IN') %}
+          {{ state_attr('sensor.carolina_panthers', 'tv_network') | upper }}
+        {% endif %}
+  - if:
+      - condition: not
+        conditions:
+          - condition: trigger
+            id: bedtv
+      - condition: not
+        conditions:
+          - condition: state
+            entity_id: remote.living_room_tv
+            state: "off"
+          - condition: state
+            entity_id: remote.living_room_tv
+            state: unavailable
+    then:
+      - data:
+          channel: "{{ channel }}"
+          device: living_room_tv
+        service: script.tv_tune_channel
+  - if:
+      - condition: not
+        conditions:
+          - condition: trigger
+            id: lrtv
+      - condition: not
+        conditions:
+          - condition: state
+            entity_id: remote.bedroom_android_tv
+            state: "off"
+          - condition: state
+            entity_id: remote.bedroom_android_tv
+            state: unavailable
+    then:
+      - data:
+          channel: "{{ channel }}"
+          device: bedroom_android_tv
+        service: script.tv_tune_channel
