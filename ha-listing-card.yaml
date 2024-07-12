@@ -1,0 +1,165 @@
+    card:
+      type: vertical-stack
+      cards:
+        - type: horizontal-stack
+          cards:
+            - type: entities
+              card_mod:
+                style: |
+                  .card-content, .card-content > div {
+                    margin: 6px 5px 0px 3px !important;
+                    padding: 0px !important;                    
+                  }              
+              entities:
+                - input_select.tv_channel_category
+            - type: entities
+              card_mod:
+                style: |
+                  .card-content, .card-content > div {
+                    margin: 0px 5px 0px 3px !important;
+                    padding: 0px !important;                    
+                  }               
+              entities:
+                - entity: sensor.youtubetv_channel_lookup
+                  name: Channels
+                  icon: mdi:youtube-tv
+                - entity: script.tv_download_channels_and_listing
+                  icon: mdi:refresh-circle
+                  name: Channels
+                  action_name: Reload
+        - type: custom:auto-entities
+          card:
+            type: entities
+            title: YouTube TV Guide
+            icon: mdi:youtube-tv
+            card_mod:
+              style:
+                .: |
+                  ha-icon {
+                    color: red;
+                  }              
+                  ha-card {
+                    height: 80vh !important;
+                    overflow: auto;
+                  }
+          filter:
+            template: >
+              {% set ns = namespace(results = []) %}
+
+              {% set channels =
+              state_attr("sensor.youtubetv_channel_lookup","details") |
+              selectattr("is_alias", "equalto", false) %} {% if not
+              is_state("input_select.tv_channel_category", "All") %}
+                {% set filtered_channels = namespace(channels = []) %}
+                {% for c in channels %}
+                  {% if (c.category == states("input_select.tv_channel_category") or c.on_now.category == states("input_select.tv_channel_category")) %}
+                    {% set filtered_channels.channels = filtered_channels.channels + [c] %}
+                  {% endif %}
+                {% endfor %}
+                {% set channels = filtered_channels.channels %}
+              {% else %}
+                {% set channels = channels | list %}
+              {% endif %}
+
+              {% for channel in channels %}
+                {% set ns.results = ns.results + [{
+                    "type": "custom:template-entity-row",
+                    "card_mod": {
+                      "style": ("#wrapper {border-radius: 6px; background-image: linear-gradient(to right, rgba(255,193,7,1) 0%, rgba(255,193,7,0) 100%);} " if states("sensor.[[entity_id]]_channel").upper() == channel.name else "") + "div.info {font-weight: bold; font-size: 12pt;} state-badge {flex: 0 0 80px !important; background-size: contain; background-position: center; background-repeat: no-repeat; border-radius: 0px;} div.secondary {border: 1px solid var(--app-header-background-color);border-radius: 5px;position: relative;} div.secondary:after {padding: 2px;content: '" + channel.on_now.start + " - " + channel.on_now.end + "'; background: var(--app-header-background-color); position: absolute; top: 0; bottom: 0; left: 0; width: " + channel.on_now.pct|string + "%; }"
+                    },
+                    "name": channel.on_now.title + (" ["  + channel.on_now.sub_title + "]" if channel.on_now.sub_title is defined else "") or channel.name,
+                    "secondary": "-",
+                    "image": channel.icon,
+                    "icon":"mdi:youtube-tv",
+                    "state": "",
+                    "tap_action": {
+                      "action": "fire-dom-event",
+                      "browser_mod": {
+                        "service": "browser_mod.popup",
+                        "data": {
+                          "title": channel.name,
+                          "content": "<img style='float: right' src='" + channel.icon + "' /><b><u>" + channel.on_now.title + "</u></b>" + (": "  + channel.on_now.sub_title if channel.on_now.sub_title is defined else "") + "<br/>" + ("<ha-icon icon='mdi:new-box' style='color: green; padding-right: 3px;'></ha-icon>" if channel.on_now.new is defined and channel.on_now.new else "") + "<i>" + channel.on_now.start + " - " + channel.on_now.end +"</i>" +  "<br/>" + ("<img style='border-radius: 8px; max-width: 100%; height: auto;' src='" + channel.on_now.icon + "' />" if channel.on_now.icon is defined else "") + ("<br/><br/>" + channel.on_now.desc if channel.on_now.desc is defined else "")  + ("<br/><br/>Staring: " + channel.on_now.credits.actor|join(", ") if channel.on_now.credits is defined and channel.on_now.credits.actor is defined else "")  + ("<br/><br/>Guests: " + channel.on_now.credits.guest|join(", ") if channel.on_now.credits is defined and channel.on_now.credits.guest is defined else "") + ("<br/><br/>Directed By: " + channel.on_now.credits.director|join(", ") if channel.on_now.credits is defined and channel.on_now.credits.director is defined else ""),
+                          "card_mod": {                        
+                            "style": {
+                              "ha-dialog$":".mdc-dialog__actions {overflow: hidden;}",
+                              "": ".header {margin-bottom: -10px;} .main-title {display: inline; position: relative; top: 17px; font-weight: bold; font-size: larger; margin-top: 10px !important;} .content {padding: 0px 20px !important;}"
+                            }                        
+                          },
+                          "right_button": "Tune now",
+                          "right_button_action": {
+                            "service": "script.tv_tune_channel",
+                            "data": {
+                              "device": "[[entity_id]]",
+                              "channel": channel.name
+                            }                      
+                          }
+                        }
+                      }
+                    },
+                    "hold_action": {
+                      "action": "call-service",
+                      "service": "script.tv_tune_channel",
+                      "data": {
+                        "device": "[[entity_id]]",
+                        "channel": channel.name
+                      }
+                    },
+                  }]
+                %}
+                {% set ns.results = ns.results + [{
+                    "type": "custom:template-entity-row",
+                    "card_mod": {
+                      "style": "#wrapper {min-height: 30px !important; height: 30px; font-style: italic; border-bottom: 1px solid silver; " + ("border-radius: 6px; background-image: linear-gradient(to right, rgba(101,255,194,1) 0%, rgba(101,255,194,0) 100%);" if state_attr("calendar.tv_auto_tune", "description") | upper == channel.name and state_attr("calendar.tv_auto_tune", "start_time")|as_datetime|as_local == channel.on_next.start_full|as_datetime else "") + " } state-badge {flex: 0 0 80px !important; text-align: right;} "
+                    },
+                    "name": "" if channel.on_next.title == "" else "Next: " + channel.on_next.title + (" ["  + channel.on_next.sub_title + "]" if channel.on_next.sub_title is defined else ""),
+                    "icon": "" if channel.on_next.title == "" else "mdi:arrow-right-bottom",
+                    "state": "",
+                    "secondary": "" if channel.on_next.title == "" else channel.on_next.start + " - " + channel.on_next.end,
+                    "tap_action": {
+                      "action": "fire-dom-event",
+                      "browser_mod": {
+                        "service": "browser_mod.popup",
+                        "data": {
+                          "title": channel.name,
+                          "content": "<img style='float: right' src='" + channel.icon + "' /><b><u>" + channel.on_next.title + "</u></b>" + (": "  + channel.on_next.sub_title if channel.on_next.sub_title is defined else "") + "<br/>" + ("<ha-icon icon='mdi:new-box' style='color: green; padding-right: 3px;'></ha-icon>" if channel.on_next.new is defined and channel.on_next.new else "") + "<i>" + channel.on_next.start + " - " + channel.on_next.end +"</i>" +  "<br/>" + ("<img style='border-radius: 8px; max-width: 100%; height: auto;' src='" + channel.on_next.icon + "' />" if channel.on_next.icon is defined else "") + ("<br/><br/>" + channel.on_next.desc if channel.on_next.desc is defined else "")  + ("<br/><br/>Staring: " + channel.on_next.credits.actor|join(", ") if channel.on_next.credits is defined and channel.on_next.credits.actor is defined else "")  + ("<br/><br/>Guests: " + channel.on_next.credits.guest|join(", ") if channel.on_next.credits is defined and channel.on_next.credits.guest is defined else "") + ("<br/><br/>Directed By: " + channel.on_next.credits.director|join(", ") if channel.on_next.credits is defined and channel.on_next.credits.director is defined else ""),
+                          "card_mod": {                        
+                            "style": {
+                              "ha-dialog$":".mdc-dialog__actions {overflow: hidden;}",
+                              "": ".header {margin-bottom: -10px;} .main-title {display: inline; position: relative; top: 17px; font-weight: bold; font-size: larger;} .content {padding: 0px 20px !important;}"
+                            }                        
+                          },
+                          "left_button": "Tune at " + channel.on_next.start,
+                          "left_button_action": {
+                            "service": "calendar.create_event",
+                            "data": {
+                              "entity_id": "calendar.tv_auto_tune",                          
+                              "summary": channel.on_next.title,
+                              "description": channel.name,
+                              "start_date_time": channel.on_next.start_full,
+                              "end_date_time": channel.on_next.end_full
+                            }                      
+                          },           
+                          "right_button": "Tune now",
+                          "right_button_action": {
+                            "service": "script.tv_tune_channel",
+                            "data": {
+                              "device": "[[entity_id]]",
+                              "channel": channel.name
+                            }                      
+                          }
+                        }
+                      }
+                    },                
+                    "hold_action": {
+                      "action": "call-service",
+                      "service": "script.tv_tune_channel",
+                      "data": {
+                        "device": "[[entity_id]]",
+                        "channel": channel.name
+                      }
+                    }
+                  }]
+                %}            
+              {% endfor %}
+
+              {{ ns.results }} 
