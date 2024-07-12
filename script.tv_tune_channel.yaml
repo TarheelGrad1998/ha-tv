@@ -1,0 +1,185 @@
+alias: "TV: Tune Channel"
+sequence:
+  - alias: Set variables
+    variables:
+      channel_code: >
+        {% set code = state_attr("sensor.youtubetv_channel_lookup", "details") |
+        selectattr("name", "equalto", channel) | map(attribute='code') | list
+        %}    
+
+        {% if (code | count()) == 0 %}
+          NOTFOUND
+        {% else %}
+          {{ code | first }}
+        {% endif %}    
+      current_code: >
+        {% set cur_code = state_attr("sensor.youtubetv_channel_lookup",
+        "details") | selectattr("name", "equalto", states('sensor.' ~ device ~
+        '_channel')|upper) | map(attribute='code') | list %}    
+
+        {% if (cur_code | count()) == 0 %}
+          NOTFOUND
+        {% else %}
+          {{ cur_code | first }}
+        {% endif %}
+  - condition: template
+    value_template: "{{ (device | upper) != 'NONE' }}"
+  - choose:
+      - conditions:
+          - condition: template
+            value_template: "{{ channel_code != \"NOTFOUND\" }}"
+            alias: If channel is valid
+        sequence:
+          - alias: Tune if Channel is different than the Current Channel
+            if:
+              - condition: template
+                value_template: "{{ current_code != channel_code }}"
+                alias: If channel is different than the current channel
+            then:
+              - choose:
+                  - conditions:
+                      - condition: template
+                        value_template: "{{ device == \"den\" }}"
+                        alias: Google TV Devices
+                    sequence:
+                      - alias: If Off, turn Device on and Wait
+                        if:
+                          - condition: template
+                            value_template: >-
+                              {{ is_state("media_player." + device + "_adb",
+                              "off") }}
+                            alias: If Device is Off
+                        then:
+                          - service: media_player.turn_on
+                            metadata: {}
+                            data: {}
+                            target:
+                              entity_id: media_player.{{ device }}_adb
+                          - delay:
+                              hours: 0
+                              minutes: 0
+                              seconds: 3
+                              milliseconds: 0
+                      - service: androidtv.adb_command
+                        data:
+                          command: >-
+                            am start -a android.intent.action.VIEW -d
+                            https://tv.youtube.com/watch?v={{ channel_code }} -n
+                            com.google.android.youtube.tvunplugged/com.google.android.apps.youtube.tvunplugged.activity.MainActivity
+                        target:
+                          entity_id: media_player.{{ device }}_adb
+                  - conditions:
+                      - condition: template
+                        value_template: "{{ device == \"becca_tv\" }}"
+                        alias: Fire TV Devices
+                    sequence:
+                      - alias: If Off, turn Device on and Wait
+                        if:
+                          - condition: template
+                            value_template: >-
+                              {{ is_state("media_player." + device + "_adb",
+                              "off") }}
+                            alias: If Device is Off
+                        then:
+                          - service: media_player.turn_on
+                            metadata: {}
+                            data: {}
+                            target:
+                              entity_id: media_player.{{ device }}_adb
+                          - delay:
+                              hours: 0
+                              minutes: 0
+                              seconds: 3
+                              milliseconds: 0
+                      - service: androidtv.adb_command
+                        data:
+                          entity_id: media_player.{{ device }}_adb
+                          command: >-
+                            am start -a android.intent.action.VIEW -d
+                            https://tv.youtube.com/watch?v={{ channel_code }} -n
+                            com.amazon.firetv.youtube.tv/dev.cobalt.app.MainActivity
+                default:
+                  - alias: If Off, turn Device on and Wait
+                    if:
+                      - alias: If Device is Off
+                        condition: template
+                        value_template: "{{ is_state(\"remote.\" + device, \"off\") }}"
+                    then:
+                      - service: remote.turn_on
+                        metadata: {}
+                        data: {}
+                        target:
+                          entity_id: remote.{{ device }}
+                      - delay:
+                          hours: 0
+                          minutes: 0
+                          seconds: 3
+                          milliseconds: 0
+                      - service: remote.turn_on
+                        data:
+                          activity: https://tv.youtube.com
+                        target:
+                          entity_id: remote.{{ device }}
+                      - delay:
+                          hours: 0
+                          minutes: 0
+                          seconds: 4
+                          milliseconds: 0
+                  - service: remote.turn_on
+                    data:
+                      activity: https://tv.youtube.com/watch/{{ channel_code }}
+                    target:
+                      entity_id: remote.{{ device }}
+        alias: Regular YouTube TV Channels
+      - conditions:
+          - condition: template
+            value_template: "{{ \"PRIME\" in (channel | upper) }}"
+            alias: Channel Requested is PRIME
+        sequence:
+          - service: remote.turn_on
+            data:
+              activity: https://app.primevideo.com
+            target:
+              entity_id: remote.{{ device }}
+        alias: Amazon Prime
+      - conditions:
+          - condition: template
+            value_template: "{{ \"ESPN+\" in (channel | upper) }}"
+            enabled: true
+            alias: Channel Requested is ESPN+
+        sequence:
+          - service: remote.turn_on
+            data:
+              activity: sportscenter://x-callback-url
+            target:
+              entity_id: remote.{{ device }}
+            enabled: true
+        alias: ESPN+
+    default:
+      - service: notify.{{ device }}
+        data:
+          message: "{{ channel }}"
+          title: Invalid Channel!
+          data:
+            fontsize: max
+            position: center
+            duration: 15
+            color: red
+        alias: TV Notification of invalid channel
+mode: queued
+max: 10
+fields:
+  device:
+    selector:
+      select:
+        options:
+          - living_room_tv
+          - bedroom_android_tv
+          - den
+    required: true
+    name: Device
+  channel:
+    selector:
+      text: null
+    name: Channel
+    required: true
