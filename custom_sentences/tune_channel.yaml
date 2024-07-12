@@ -1,0 +1,35 @@
+language: "en"
+intents:
+  TVChannelByDeviceIntent:
+    data:
+      - sentences:
+          - "(tune|turn|change) {device} to {channel}[.]"
+lists:
+  device:
+    values:
+      - in: "living room"
+        out: "living_room_tv"
+      - in: "tv"
+        out: "living_room_tv"
+      - in: "television"
+        out: "living_room_tv"        
+      - in: "bedroom"
+        out: "bedroom_android_tv"
+      - in: "bedroom tv"
+        out: "bedroom_android_tv"        
+      - in: "shield"
+        out: "bedroom_android_tv"
+      - in: "den"
+        out: "den"                
+      - in: "theater"
+        out: "den"         
+      - in: "projector"
+        out: "den"     
+      - in: "Becca"
+        out: "becca_tv"         
+      - in: "Becca's tv"
+        out: "becca_tv" 
+      - in: "Rebecca's tv"
+        out: "becca_tv"                                         
+  channel:
+    wildcard: true
