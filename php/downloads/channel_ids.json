@@ -1,0 +1,518 @@
+[
+    {
+        "category": "Network",
+        "id": "1281.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "WRAL"
+    },
+    {
+        "category": "Network",
+        "id": "1284.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "ABC 11"
+    },
+    {
+        "category": "Network",
+        "id": "1285.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "CBS 17"
+    },
+    {
+        "category": "Network",
+        "id": "1303.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "FOX 50"
+    },
+    {
+        "category": "Secondary",
+        "id": "1299.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "MYRDCTV"
+    },
+    {
+        "category": "Secondary",
+        "id": "1286.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "CW 22"
+    },
+    {
+        "category": "Secondary",
+        "id": "8340.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "COZI"
+    },
+    {
+        "category": "Secondary",
+        "id": "17171.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "COMET TV"
+    },
+    {
+        "category": "Secondary",
+        "id": "1252.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "TV LAND"
+    },
+    {
+        "category": "Others",
+        "id": "17436.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "GETTV"
+    },
+    {
+        "category": "Others",
+        "id": "1302.stations.xmltv.tvmedia.ca",
+        "listing_id": "8098",
+        "name": "ION"
+    },
+    {
+        "category": "Others",
+        "id": "15668.stations.xmltv.tvmedia.ca",
+        "listing_id": "8098",
+        "name": "CHARGE!"
+    },
+    {
+        "category": "Others",
+        "id": "10165.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "POP"
+    },
+    {
+        "category": "Others",
+        "id": "33006.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "START TV"
+    },
+    {
+        "category": "Favorites",
+        "id": "596.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "SYFY"
+    },
+    {
+        "category": "Favorites",
+        "id": "652.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "FX"
+    },
+    {
+        "category": "Favorites",
+        "id": "1952.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "FXX"
+    },
+    {
+        "category": "Favorites",
+        "id": "1308.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "FXM"
+    },
+    {
+        "category": "Favorites",
+        "id": "347.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "TNT"
+    },
+    {
+        "category": "Favorites",
+        "id": "61.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "TBS"
+    },
+    {
+        "category": "Favorites",
+        "id": "640.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "USA"
+    },
+    {
+        "category": "Favorites",
+        "id": "647.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "COMEDY CENTRAL"
+    },
+    {
+        "category": "Others",
+        "id": "14995.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "COMEDY.TV"
+    },
+    {
+        "category": "Favorites",
+        "id": "333.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "TRUTV"
+    },
+    {
+        "category": "Favorites",
+        "id": "1011.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "FREEFORM"
+    },
+    {
+        "category": "Favorites",
+        "id": "177.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "AMC"
+    },
+    {
+        "category": "Favorites",
+        "id": "615.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "BBC AMERICA"
+    },
+    {
+        "category": "Favorites",
+        "id": "1966.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "IFC"
+    },
+    {
+        "category": "Others",
+        "id": "1052.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "HALLMARK CHANNEL"
+    },
+    {
+        "category": "Others",
+        "id": "4453.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "HALLMARK MOVIES & MYSTERIES"
+    },
+    {
+        "category": "Others",
+        "id": "32480.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "HALLMARK DRAMA"
+    },
+    {
+        "category": "Others",
+        "id": "1848.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "SUNDANCETV"
+    },
+    {
+        "category": "Secondary",
+        "id": "1030.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "PARAMOUNT"
+    },
+    {
+        "category": "Secondary",
+        "id": "617.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "E!"
+    },
+    {
+        "category": "Others",
+        "id": "12001.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "COURT TV"
+    },
+    {
+        "category": "Others",
+        "id": "14993.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "JUSTICECENTRAL.TV"
+    },
+    {
+        "category": "Favorites",
+        "id": "5005.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "TLC"
+    },
+    {
+        "category": "Favorites",
+        "id": "2090.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "ID"
+    },
+    {
+        "category": "Favorites",
+        "id": "649.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "DISCOVERY CHANNEL"
+    },
+    {
+        "category": "Favorites",
+        "id": "645.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "ANIMAL PLANET"
+    },
+    {
+        "category": "Secondary",
+        "id": "657.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "NAT GEO"
+    },
+    {
+        "category": "Secondary",
+        "id": "7537.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "NAT GEO WILD"
+    },
+    {
+        "category": "Others",
+        "id": "623.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "HGTV"
+    },
+    {
+        "category": "Others",
+        "id": "35201.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "DABL"
+    },
+    {
+        "category": "Others",
+        "id": "1054.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "FOOD NETWORK"
+    },
+    {
+        "category": "Others",
+        "id": "662.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "TRAVEL CHANNEL"
+    },
+    {
+        "category": "Others",
+        "id": "646.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "BRAVO"
+    },
+    {
+        "category": "Others",
+        "id": "1159.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "OWN"
+    },
+    {
+        "category": "Others",
+        "id": "659.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "OXYGEN TRUE CRIME"
+    },
+    {
+        "category": "Others",
+        "id": "664.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "WE TV"
+    },
+    {
+        "category": "Others",
+        "id": "4679.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "SMITHSONIAN CHANNEL"
+    },
+    {
+        "category": "Others",
+        "id": "176.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "TURNER CLASSIC MOVIES"
+    },
+    {
+        "category": "Secondary",
+        "id": "656.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "MTV"
+    },
+    {
+        "category": "Secondary",
+        "id": "1515.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "MTV2"
+    },
+    {
+        "category": "Secondary",
+        "id": "2093.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "MTV CLASSIC"
+    },
+    {
+        "category": "Secondary",
+        "id": "663.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "VH1"
+    },
+    {
+        "category": "Secondary",
+        "id": "323.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "BET"
+    },
+    {
+        "category": "Secondary",
+        "id": "6837.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "BET HER"
+    },
+    {
+        "category": "Secondary",
+        "id": "1076.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "CMT"
+    },
+    {
+        "category": "Others",
+        "id": "329.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "GAME SHOW NETWORK"
+    },
+    {
+        "category": "Sports",
+        "id": "3349.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "NFL NETWORK"
+    },
+    {
+        "category": "Sports",
+        "id": "594.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "ESPN"
+    },
+    {
+        "category": "Sports",
+        "id": "650.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "ESPN2"
+    },
+    {
+        "category": "Sports",
+        "id": "1527.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "ESPNEWS"
+    },
+    {
+        "category": "Sports",
+        "id": "3331.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "ESPNU"
+    },
+    {
+        "category": "Sports",
+        "id": "668.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "FS1"
+    },
+    {
+        "category": "Sports",
+        "id": "2114.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "FS2"
+    },
+    {
+        "category": "Sports",
+        "id": "3115.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "CBS SPORTS NETWORK"
+    },
+    {
+        "category": "Sports",
+        "id": "33964.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "ACC NETWORK"
+    },
+    {
+        "category": "Sports",
+        "id": "13711.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "SEC NETWORK"
+    },
+    {
+        "category": "Sports",
+        "id": "4499.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "BTN"
+    },
+    {
+        "category": "Sports",
+        "id": "2143.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "MOTORTREND"
+    },
+    {
+        "category": "Kids",
+        "id": "1289.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "PBS NC"
+    },
+    {
+        "category": "Kids",
+        "id": "7187.stations.xmltv.tvmedia.ca",
+        "listing_id": "8098",
+        "name": "PBS KIDS"
+    },
+    {
+        "category": "Kids",
+        "id": "661.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "CARTOON NETWORK"
+    },
+    {
+        "category": "Kids",
+        "id": "595.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "DISNEY CHANNEL"
+    },
+    {
+        "category": "Kids",
+        "id": "1053.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "DISNEY XD"
+    },
+    {
+        "category": "Kids",
+        "id": "6867.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "DISNEY JUNIOR"
+    },
+    {
+        "category": "Kids",
+        "id": "658.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "NICKELODEON"
+    },
+    {
+        "category": "Kids",
+        "id": "1954.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "TEENNICK"
+    },
+    {
+        "category": "Kids",
+        "id": "2010.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "NICKTOONS"
+    },
+    {
+        "category": "Kids",
+        "id": "1969.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "NICK JR."
+    },
+    {
+        "category": "Kids",
+        "id": "4349.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "UNIVERSAL KIDS"
+    },
+    {
+        "category": "Network",
+        "id": "1526.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "THE WEATHER CHANNEL"
+    },
+    {
+        "category": "Network",
+        "id": "33789.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "LOCAL NOW"
+    },
+    {
+        "category": "Network",
+        "id": "527.stations.xmltv.tvmedia.ca",
+        "listing_id": "8080",
+        "name": "BBC NEWS"
+    }
+]
