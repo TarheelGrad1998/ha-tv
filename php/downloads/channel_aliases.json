@@ -1,0 +1,86 @@
+[
+    {
+        "alias": "ABC",
+        "name": "ABC 11"
+    },
+    {
+        "alias": "A. B. C.",
+        "name": "ABC 11"
+    },
+    {
+        "alias": "A.C.C NETWORK",
+        "name": "ACC NETWORK"
+    },
+    {
+        "alias": "ACCN",
+        "name": "ACC NETWORK"
+    },
+    {
+        "alias": "BBC",
+        "name": "BBC AMERICA"
+    },
+    {
+        "alias": "CBS",
+        "name": "CBS 17"
+    },
+    {
+        "alias": "COMET",
+        "name": "COMET TV"
+    },
+    {
+        "alias": "COZY",
+        "name": "COZI"
+    },
+    {
+        "alias": "CW",
+        "name": "CW 22"
+    },
+    {
+        "alias": "DISCOVERY",
+        "name": "DISCOVERY CHANNEL"
+    },
+    {
+        "alias": "DISNEY",
+        "name": "DISNEY CHANNEL"
+    },
+    {
+        "alias": "E",
+        "name": "E!"
+    },
+    {
+        "alias": "FOX",
+        "name": "FOX 50"
+    },
+    {
+        "alias": "MYRDC",
+        "name": "MYRDCTV"
+    },
+    {
+        "alias": "SMITHSONIAN",
+        "name": "SMITHSONIAN CHANNEL"
+    },
+    {
+        "alias": "SUNDANCE",
+        "name": "SUNDANCETV"
+    },
+    {
+        "alias": "TRAVEL",
+        "name": "TRAVEL CHANNEL"
+    },
+    {
+        "alias": "WE",
+        "name": "WE TV"
+    },
+    {
+        "alias": "NBC",
+        "name": "WRAL"
+    },
+    {
+        "alias": "E.S.P.N.",
+        "name": "ESPN"
+    },
+    {
+        "alias": "NFL NET",
+        "name": "NFL NETWORK"
+    }
+]
